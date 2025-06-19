@@ -1,160 +1,126 @@
 body {
-  background-color: #fdfdfd;
-  color: #333;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f5fb;
+  color: #4a3b5c;
 }
 
 header {
-  background-color: transparent;
-  padding: 30px 20px 0;
   text-align: center;
+  padding: 40px 20px 10px;
 }
 
 header h1 {
   font-family: 'Great Vibes', cursive;
-  color: #a362d6;
   font-size: 3em;
+  color: #a472c4;
 }
 
 .galeria-servicios {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
-  padding: 40px 20px;
-  justify-items: center;
+  padding: 30px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .servicio-boton {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  padding: 15px;
-  width: 100%;
-  max-width: 240px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(164, 114, 196, 0.2);
   text-align: center;
+  padding: 15px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .servicio-boton:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(163, 98, 214, 0.2);
+  transform: translateY(-5px);
 }
 
 .servicio-boton img {
   width: 100%;
-  height: auto;
   border-radius: 12px;
 }
 
 .servicio-boton h2 {
+  color: #804d99;
   margin-top: 12px;
-  font-size: 1.1em;
-  color: #6e3693;
 }
 
 .vista-detalle {
   display: none;
-  padding: 40px 20px;
-  max-width: 700px;
-  margin: auto;
-  background-color: #fff;
+  max-width: 800px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
 .vista-detalle h2 {
   font-family: 'Great Vibes', cursive;
-  color: #a362d6;
   font-size: 2.5em;
+  color: #a472c4;
+  margin-bottom: 15px;
 }
 
 .vista-detalle p {
-  margin: 20px 0;
   font-size: 1.1em;
-  line-height: 1.6;
   color: #444;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
-.whatsapp-boton, .vista-detalle button {
-  display: inline-block;
-  background: linear-gradient(135deg, #d7a3ff, #b26bdb);
+.whatsapp-boton,
+.vista-detalle button {
+  background-color: #a472c4;
   color: white;
   border: none;
   padding: 12px 24px;
   border-radius: 30px;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
   margin: 10px;
-  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(164, 114, 196, 0.3);
+  transition: background-color 0.3s ease;
 }
 
 .whatsapp-boton:hover,
 .vista-detalle button:hover {
-  background: linear-gradient(135deg, #c088e3, #a958c9);
-  transform: scale(1.05);
+  background-color: #8e5eb3;
 }
 
-.logo-flotante {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 70px;
-  height: auto;
-  z-index: 1000;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  background-color: white;
-  padding: 6px;
-  transition: transform 0.3s ease;
-}
-
-.logo-flotante:hover {
-  transform: scale(1.05) rotate(1deg);
-}
-
-/* Animaciones */
 .fade {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .fade.active {
   opacity: 1;
 }
 
-/* Mobile */
+footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  font-size: 0.9em;
+  color: #888;
+}
+
 @media (max-width: 600px) {
+  header h1 {
+    font-size: 2.2em;
+  }
+
   .galeria-servicios {
     grid-template-columns: 1fr;
   }
 
   .vista-detalle {
-    padding: 30px 15px;
-  }
-
-  .vista-detalle h2 {
-    font-size: 2em;
-  }
-
-  .whatsapp-boton,
-  .vista-detalle button {
-    font-size: 1em;
-    padding: 10px 20px;
-  }
-
-  header h1 {
-    font-size: 2.2em;
-  }
-
-  .logo-flotante {
-    width: 55px;
-    top: 12px;
-    right: 12px;
+    margin: 20px 10px;
+    padding: 20px;
   }
 }
-
