@@ -1,126 +1,120 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f8f5fb;
-  color: #4a3b5c;
+  font-family: 'Parisienne', cursive;
+  background-color: #f9f7fc;
+  color: #4c2a5d;
 }
 
 header {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
   text-align: center;
-  padding: 40px 20px 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-bottom: 2px solid #d1b3e0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 header h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3em;
-  color: #a472c4;
+  margin: 0;
+  font-size: 2.5em;
+  color: #6c3483;
 }
 
 .galeria-servicios {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
   padding: 30px;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .servicio-boton {
-  background-color: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 4px 10px rgba(164, 114, 196, 0.2);
-  text-align: center;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   padding: 15px;
-  cursor: pointer;
+  text-align: center;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .servicio-boton:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
 }
 
 .servicio-boton img {
-  width: 100%;
-  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .servicio-boton h2 {
-  color: #804d99;
-  margin-top: 12px;
+  margin-top: 10px;
+  font-size: 1.3em;
+  color: #7a3d8f;
 }
 
 .vista-detalle {
   display: none;
-  max-width: 800px;
+  max-width: 600px;
   margin: 40px auto;
+  padding: 20px;
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   text-align: center;
 }
 
 .vista-detalle h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5em;
-  color: #a472c4;
-  margin-bottom: 15px;
+  font-size: 2em;
+  color: #7a3d8f;
 }
 
 .vista-detalle p {
-  font-size: 1.1em;
-  color: #444;
-  line-height: 1.6;
-  margin-bottom: 30px;
+  font-size: 1.2em;
+  margin: 20px 0;
 }
 
 .whatsapp-boton,
-.vista-detalle button {
-  background-color: #a472c4;
+.volver-boton {
+  display: inline-block;
+  background: linear-gradient(145deg, #b37cd3, #d6a2e8);
   color: white;
-  border: none;
   padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 1em;
-  font-weight: bold;
   margin: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(164, 114, 196, 0.3);
-  transition: background-color 0.3s ease;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1em;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  font-family: 'Parisienne', cursive;
 }
 
 .whatsapp-boton:hover,
-.vista-detalle button:hover {
-  background-color: #8e5eb3;
+.volver-boton:hover {
+  background: linear-gradient(145deg, #a04fc2, #c792df);
+  transform: translateY(-2px);
 }
 
 .fade {
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
-.fade.active {
+.active {
+  display: block !important;
   opacity: 1;
 }
 
 footer {
   text-align: center;
-  padding: 40px 20px 20px;
+  padding: 20px;
+  background-color: #f3e5f5;
+  color: #7a3d8f;
   font-size: 0.9em;
-  color: #888;
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 2.2em;
-  }
-
-  .galeria-servicios {
-    grid-template-columns: 1fr;
-  }
-
-  .vista-detalle {
-    margin: 20px 10px;
-    padding: 20px;
-  }
+  margin-top: 40px;
 }
