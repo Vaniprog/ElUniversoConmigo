@@ -1,0 +1,196 @@
+
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: #f5e6ff;
+    color: #4c2a5d;
+    transition: background-color 0.5s ease;
+  }
+  
+  header {
+    background-color: #d1b3ff;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  header h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5em;
+    margin: 0;
+    color: #4c2a5d;
+  }
+  
+  /* Galería principal */
+  .galeria-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el grid en la pantalla */
+  }
+  
+  
+  .servicio-boton {
+    text-align: center;
+    width: 100%;
+    max-width: 220px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .servicio-boton img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .servicio-boton h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6em;
+    margin-top: 10px;
+  }
+  
+  .servicio-boton:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Vista detalle de servicio */
+  .vista-detalle {
+    display: none;
+    padding: 40px 20px;
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .vista-detalle h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .vista-detalle p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  /* Botón de WhatsApp personalizado */
+  .whatsapp-boton {
+    display: inline-block;
+    background: linear-gradient(135deg, #a26cd4, #c285ff);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .whatsapp-boton:hover {
+    background: linear-gradient(135deg, #8d5ac1, #b573ff);
+    transform: scale(1.05);
+  }
+  
+ /* Botón volver — ahora igual de lindo que el de WhatsApp */
+.vista-detalle button {
+    display: inline-block;
+    background: linear-gradient(135deg, #d7a3ff, #b26bdb);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .vista-detalle button:hover {
+    background: linear-gradient(135deg, #c088e3, #a958c9);
+    transform: scale(1.05);
+  }
+  
+  
+  /* Transiciones suaves */
+  .fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .fade.active {
+    opacity: 1;
+    display: block;
+  }
+  
+  footer {
+    text-align: center;
+    background-color: #d1b3ff;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #4c2a5d;
+  }
+  /* Logo flotante sofisticado */
+.logo-flotante {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: auto;
+    z-index: 1000;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    padding: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-flotante:hover {
+    transform: scale(1.05) rotate(1deg);
+  }
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+    .galeria-servicios {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .servicio-boton {
+      width: 80%;
+    }
+  
+    .logo-flotante {
+      width: 60px;
+      top: 10px;
+      right: 10px;
+      padding: 5px;
+    }
+  
+    .vista-detalle {
+      padding: 30px 15px;
+    }
+  
+    .vista-detalle h2 {
+      font-size: 2em;
+    }
+  
+    .whatsapp-boton,
+    .vista-detalle button {
+      font-size: 1em;
+      padding: 10px 20px;
+    }
+  
+    header h1 {
+      font-size: 2.2em;
+    }
+  }
+    
