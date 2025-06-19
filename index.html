@@ -1,135 +1,362 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Servicios Espirituales</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    /* --- CSS completo --- */
+    body, html {
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #4a4a4a;
+    }
+
+    #landing, #servicios, .detalle-servicio {
+      flex-grow: 1;
+      padding: 2rem;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    #landing {
+      background: linear-gradient(to bottom right, #d4b2f9, #f9e8ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #landing.hidden, #servicios.hidden, .detalle-servicio.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(30px);
+      height: 0;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+
+    #landing.visible, #servicios.visible, .detalle-servicio.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      height: auto;
+      padding: 2rem;
+      margin: 1rem auto;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #7a3ca4;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-style: italic;
+      color: #5e4a6c;
+    }
+
+    button, .boton-entrar, .boton-whatsapp, .boton-volver {
+      cursor: pointer;
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem 1.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+    }
+
+    .boton-entrar {
+      background-color: #a26ac4;
+    }
+
+    .boton-entrar:hover {
+      background-color: #884caa;
+    }
+
+    #servicios {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .grid-servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .tarjeta {
+      background-color: #f9f1ff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+    }
+
+    .tarjeta h3 {
+      color: #5e368f;
+      margin-bottom: 0.5rem;
+    }
+
+    .tarjeta p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .detalle-servicio {
+      max-width: 700px;
+      background: #fefaff;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 18px rgba(122, 60, 164, 0.15);
+      text-align: center;
+    }
+
+    .detalle-servicio img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+    }
+
+    .boton-whatsapp {
+      background-color: #25d366;
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 10px rgba(37, 211, 102, 0.4);
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .boton-whatsapp:hover {
+      background-color: #1ebe57;
+    }
+
+    .boton-volver {
+      background-color: #7a3ca4;
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+    }
+
+    .boton-volver:hover {
+      background-color: #5e2e78;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .grid-servicios {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Conexión Espiritual</h1>
-  </header>
 
-  <section id="vista-principal" class="galeria-servicios fade active">
-    <div class="servicio-boton" onclick="mostrarVista('reiki_kahuna')">
-      <img src="images/imagenes/images.jpeg" alt="Curso Reiki Kahuna Nivel 1">
-      <h2>Curso Reiki Kahuna Nivel 1</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('oleatos')">
-      <img src="images/imagenes/descarga (1).jpeg" alt="Taller de Oleatos">
-      <h2>Taller de Oleatos</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('flores_bach')">
-      <img src="images/imagenes/descarga (2).jpeg" alt="Flores de Bach">
-      <h2>Flores de Bach</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('duendes_hadas_magos')">
-      <img src="images/imagenes/descarga (3).jpeg" alt="Duendes, Hadas y Magos">
-      <h2>Duendes, Hadas y Magos</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('terapias_reiki_usui')">
-      <img src="terapias_reiki_usui.jpg" alt="Terapias Reiki Usui">
-      <h2>Terapias Reiki Usui</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('bioneurocodificacion')">
-      <img src="images/imagenes/descarga.jpeg" alt="Bioneurocodificación">
-      <h2>Bioneurocodificación</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('constelaciones_familiares')">
-      <img src="images/imagenes/descarga (4).jpeg" alt="Constelaciones Familiares">
-      <h2>Constelaciones Familiares</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('lectura_borra_cafe')">
-      <img src="images/imagenes/Imagen de WhatsApp 2025-06-11 a las 18.03.34_11020ab9.jpg" alt="Lectura de Borra de Café">
-      <h2>Lectura de Borra de Café</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('curso_reiki_usui_tibetano')">
-      <img src="images/imagenes/descarga (5).jpeg" alt="Curso Reiki Usui Tibetano Niveles 1, 2 y 3">
-      <h2>Curso Reiki Usui Tibetano 1, 2 y 3</h2>
-    </div>
-    <div class="servicio-boton" onclick="mostrarVista('reiki_angelico')">
-      <img src="images/imagenes/images (1).jpeg" alt="Reiki Angélico">
-      <h2>Reiki Angélico</h2>
-    </div>
+  <!-- Landing -->
+  <section id="landing" class="visible">
+    <h1>Bienvenida a tu Espiritualidad</h1>
+    <p>Elige un servicio para conectar con tu energía interior</p>
+    <button class="boton-entrar" onclick="mostrarServicios()">Comenzar</button>
   </section>
 
-  <!-- Vistas individuales -->
-  <section id="vista-reiki_kahuna" class="vista-detalle fade">
+  <!-- Servicios Listado -->
+  <section id="servicios" class="hidden">
+    <h2>Servicios Espirituales</h2>
+    <div class="grid-servicios">
+      <div class="tarjeta" onclick="mostrarDetalle('reiki-kahuna')">
+        <h3>✨ Curso Reiki Kahuna Nivel 1</h3>
+        <p>Aprende a canalizar la energía para sanar cuerpo y alma.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('taller-oleatos')">
+        <h3>🌿 Taller de Oleatos</h3>
+        <p>Descubre el poder de los extractos naturales.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('flores-bach')">
+        <h3>🌸 Flores de Bach</h3>
+        <p>Armoniza tus emociones con esencias florales.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('duendes-hadas-magos')">
+        <h3>🧚‍♂️ Duendes, Hadas y Magos</h3>
+        <p>Conecta con la magia del mundo invisible.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('terapias-reiki-usui')">
+        <h3>🔮 Terapias Reiki Usui</h3>
+        <p>Sanación energética para bienestar total.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('bicodificacion')">
+        <h3>🧠 Bioneurocodificación</h3>
+        <p>Libera patrones y creencias limitantes.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('constelaciones-familiares')">
+        <h3>👪 Constelaciones Familiares</h3>
+        <p>Entiende y sana vínculos familiares.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('lectura-borra-cafe')">
+        <h3>☕ Lectura de Borra de Café</h3>
+        <p>Descubre mensajes ocultos en tu taza.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('curso-reiki-usui-tibetano')">
+        <h3>🕉️ Curso Reiki Usui Tibetano Niveles 1, 2 y 3</h3>
+        <p>Domina técnicas avanzadas de reiki.</p>
+      </div>
+      <div class="tarjeta" onclick="mostrarDetalle('reiki-angelico')">
+        <h3>😇 Reiki Angélico</h3>
+        <p>Conecta con la energía de los ángeles.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Detalles servicios -->
+
+  <section id="detalle-reiki-kahuna" class="detalle-servicio hidden">
     <h2>Curso Reiki Kahuna Nivel 1</h2>
-    <p>Técnica hawaiana para armonizar cuerpo, mente y energía vital.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Curso Reiki Kahuna" />
+    <p>Explora la antigua tradición hawaiana del Reiki Kahuna para sanar y equilibrar tu energía vital, conectando con la sabiduría ancestral para armonizar cuerpo, mente y espíritu.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-oleatos" class="vista-detalle fade">
+  
+  <section id="detalle-taller-oleatos" class="detalle-servicio hidden">
     <h2>Taller de Oleatos</h2>
-    <p>Aprendé a preparar aceites con propiedades curativas usando plantas.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Taller de Oleatos" />
+    <p>Aprende a preparar oleatos, extractos medicinales naturales, y descubre sus beneficios terapéuticos para tu bienestar integral y cuidado natural.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-flores_bach" class="vista-detalle fade">
+  
+  <section id="detalle-flores-bach" class="detalle-servicio hidden">
     <h2>Flores de Bach</h2>
-    <p>Sanación emocional y espiritual a través de esencias florales naturales.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Flores de Bach" />
+    <p>Utiliza las esencias florales de Bach para armonizar tus emociones, liberarte de bloqueos y fomentar un equilibrio emocional profundo y natural.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-duendes_hadas_magos" class="vista-detalle fade">
+  
+  <section id="detalle-duendes-hadas-magos" class="detalle-servicio hidden">
     <h2>Duendes, Hadas y Magos</h2>
-    <p>Conexión con el mundo mágico para despertar la energía de la fantasía interior.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Duendes, Hadas y Magos" />
+    <p>Conecta con las energías mágicas de duendes, hadas y magos, y aprende a identificar su presencia y guía en la naturaleza y en tu vida cotidiana.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-terapias_reiki_usui" class="vista-detalle fade">
+  
+  <section id="detalle-terapias-reiki-usui" class="detalle-servicio hidden">
     <h2>Terapias Reiki Usui</h2>
-    <p>Sesiones de energía para desbloquear y armonizar tu campo vital.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" alt="Terapias Reiki Usui" />
+    <p>Recibe sesiones de sanación energética Reiki Usui para equilibrar cuerpo y mente, reduciendo estrés y fomentando la renovación interior.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-bioneurocodificacion" class="vista-detalle fade">
+  
+  <section id="detalle-bicodificacion" class="detalle-servicio hidden">
     <h2>Bioneurocodificación</h2>
-    <p>Comprendé el origen emocional de tus dolencias y saná desde adentro.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&w=800&q=80" alt="Bioneurocodificación" />
+    <p>Identifica y libera patrones emocionales y creencias inconscientes que bloquean tu bienestar, creando espacio para una vida más plena y consciente.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-constelaciones_familiares" class="vista-detalle fade">
+  
+  <section id="detalle-constelaciones-familiares" class="detalle-servicio hidden">
     <h2>Constelaciones Familiares</h2>
-    <p>Método terapéutico para sanar lazos y patrones familiares inconscientes.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Constelaciones Familiares" />
+    <p>Sana los lazos familiares y dinámicas ocultas que influyen en tu presente para recuperar la armonía y paz interior.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-lectura_borra_cafe" class="vista-detalle fade">
+  
+  <section id="detalle-lectura-borra-cafe" class="detalle-servicio hidden">
     <h2>Lectura de Borra de Café</h2>
-    <p>Arte ancestral para interpretar mensajes a través de símbolos en la taza.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80" alt="Lectura de Borra de Café" />
+    <p>Interpreta las formas y símbolos en la borra de tu café para obtener mensajes y predicciones que te guían en tu camino.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-curso_reiki_usui_tibetano" class="vista-detalle fade">
-    <h2>Curso Reiki Usui Tibetano 1, 2 y 3</h2>
-    <p>Formación completa desde la iniciación hasta la maestría en Reiki Tibetano.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+  
+  <section id="detalle-curso-reiki-usui-tibetano" class="detalle-servicio hidden">
+    <h2>Curso Reiki Usui Tibetano Niveles 1, 2 y 3</h2>
+    <img src="https://images.unsplash.com/photo-1526406915893-57b29c7a3f6b?auto=format&fit=crop&w=800&q=80" alt="Curso Reiki Usui Tibetano" />
+    <p>Domina técnicas profundas y avanzadas de Reiki Usui Tibetano para potenciar tu sanación y crecimiento espiritual.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
-
-  <section id="vista-reiki_angelico" class="vista-detalle fade">
+  
+  <section id="detalle-reiki-angelico" class="detalle-servicio hidden">
     <h2>Reiki Angélico</h2>
-    <p>Conectá con energías angélicas para elevar tu frecuencia espiritual.</p>
-    <a href="https://wa.me/59894412355" class="whatsapp-boton" target="_blank">Reservar por WhatsApp</a>
-    <button class="volver-boton" onclick="volver()">Volver</button>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Reiki Angélico" />
+    <p>Conecta con la energía angelical para recibir sanación y guía espiritual elevando tu vibración y bienestar.</p>
+    <a href="https://wa.me/59894412355" target="_blank" class="boton-whatsapp">Contactar por WhatsApp</a>
+    <br />
+    <button class="boton-volver" onclick="volverServicios()">Volver</button>
   </section>
+  
 
-  <footer>
-    <p>© 2025 Conexión Espiritual</p>
-  </footer>
+  <script>
+    function mostrarServicios() {
+      document.getElementById('landing').classList.remove('visible');
+      document.getElementById('landing').classList.add('hidden');
+      document.getElementById('servicios').classList.remove('hidden');
+      document.getElementById('servicios').classList.add('visible');
+    }
 
-  <script src="script.js"></script>
+    function mostrarDetalle(id) {
+      document.getElementById('landing').classList.remove('visible');
+      document.getElementById('landing').classList.add('hidden');
+      document.getElementById('servicios').classList.remove('visible');
+      document.getElementById('servicios').classList.add('hidden');
+
+      // Oculto todos los detalles
+      const detalles = document.querySelectorAll('.detalle-servicio');
+      detalles.forEach(d => {
+        d.classList.remove('visible');
+        d.classList.add('hidden');
+      });
+
+      // Muestro el detalle seleccionado
+      const detalle = document.getElementById('detalle-' + id);
+      if (detalle) {
+        detalle.classList.remove('hidden');
+        detalle.classList.add('visible');
+      }
+    }
+
+    function volverServicios() {
+      const detalles = document.querySelectorAll('.detalle-servicio');
+      detalles.forEach(d => {
+        d.classList.remove('visible');
+        d.classList.add('hidden');
+      });
+      document.getElementById('servicios').classList.remove('hidden');
+      document.getElementById('servicios').classList.add('visible');
+    }
+  </script>
 </body>
 </html>
